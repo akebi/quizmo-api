@@ -1,7 +1,10 @@
-class Question < ActiveRecord::Base
+class Question
+	include Mongoid::Document
+	include Mongoid::Timestamps::Created
+	include Mongoid::Timestamps::Updated
+
 	validates :name, presence: true
 
-	has_one :score
-	has_many :answers
-
+	field :name, type: String
+	embeds_many :answers
 end
