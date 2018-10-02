@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -34,6 +32,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # MongoDB ODM
 gem 'mongoid', '~> 5.4.0'
+# Serialise Ruby types to BSON used ny mongodb
+gem 'bson_ext', '~> 1.5.1'
+
+# GraphQL for API
+gem 'graphql', '~> 1.8.10'
 
 group :development do
 	# Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -44,6 +47,9 @@ group :development do
 
   	# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
  	gem 'spring'
+
+	# Tools for graphql development in ruby
+	gem 'graphiql-rails', '1.4.11'
 end
 
 group :test do
@@ -51,5 +57,7 @@ group :test do
 
 	# MongoDB ODM rspec matchers
   	gem 'mongoid-rspec', '~> 4.0.1'
+	
+	# Generate fake data for seeds/fixtures
+	gem 'faker', '~> 1.9.1'
 end
-

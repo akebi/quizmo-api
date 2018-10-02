@@ -1,4 +1,3 @@
-#class Answer < ActiveRecord::Base
 class Answer
 	include Mongoid::Document
 	include Mongoid::Timestamps::Created
@@ -9,6 +8,7 @@ class Answer
 
 	field :name, type: String
 	field :correct, type: Boolean, default: false
-	embedded_in :question
 
+	embedded_in :question
+	
 end

@@ -1,13 +1,20 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require "rails"
+require "active_model/railtie"
+require "active_job/railtie"
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "action_view/railtie"
+require "sprockets/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module Quizmo
-  class Application < Rails::Application
+	class Application < Rails::Application
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -21,11 +28,17 @@ module Quizmo
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+    #config.active_record.raise_in_transactional_callbacks = true
 
-	 #config.generators do |g|
-	#	 g.orm :mongoid
-	# end
+		# Bootstrap mongoid within applications
+	 	Mongoid.load!('./config/mongoid.yml')
 
-  end
+		config.mongoid.logger = Logger.new($stdout, :warn)
+	 
+	 	config.generators { |g| g.orm :mongoid }
+
+		config.mongoid.preload_models = false
+
+	end
+ 
 end

@@ -1,4 +1,7 @@
 # Rails
+.bundle/
+.rspec/
+.byebug_history/
 bin/
 
 # Vim swap files

@@ -6,5 +6,8 @@ class Question
 	validates :name, presence: true
 
 	field :name, type: String
+
+	belongs_to :category
 	embeds_many :answers
+
 end
