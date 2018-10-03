@@ -37,7 +37,7 @@ module Quizmo
 	 
 	 	config.generators { |g| g.orm :mongoid }
 
-		config.mongoid.preload_models = false
+		# config.mongoid.preload_models = false
 
 	end
  

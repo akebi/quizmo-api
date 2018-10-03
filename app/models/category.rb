@@ -6,6 +6,5 @@ class Category
   field :name, type: String
   
   has_one :rubric
-  has_many :questions
 
 end
