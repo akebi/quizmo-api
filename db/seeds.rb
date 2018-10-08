@@ -13,11 +13,9 @@ open.rubric = Rubric.create!(name: 'open', unit_score: 40, pass_deduction: 20)
 	answers = Array.new
 	4.times { answers << { name: Faker::DrWho.catch_phrase, correct: Faker::Boolean.boolean(0.25) } }
 	Question.create!(name: Faker::ChuckNorris.fact, category: mcq, answers: answers)
-	# question.category = mcq
 end
 
 20.times do
-	answers = [ { name: Faker::GameOfThrones.dragon, correct: true } ]
-	question = Question.create!(name: Faker::FamousLastWords.last_words, answers: answers)	
-	question.category = open
+	answers = [{ name: Faker::GameOfThrones.dragon, correct: true }]
+	Question.create!(name: Faker::FamousLastWords.last_words, category: open, answers: answers)	
 end
