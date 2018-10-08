@@ -3,5 +3,5 @@ Types::QuestionType = GraphQL::ObjectType.define do
 
 	field :name, !types.String
 	field :category, -> { Types::CategoryType }
-	field :answers, -> { types[Types::AnswerType] }
+	field :answers, -> { !types[Types::AnswerType] }
 end
