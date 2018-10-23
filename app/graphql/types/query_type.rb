@@ -9,4 +9,8 @@ Types::QueryType = GraphQL::ObjectType.define do
 		resolve -> (obj, args, ctx) { Category.all }
 	end
 
+	field :rubrics, !types[Types::RubricType] do
+		resolve -> (obj, args, ctx) { Rubric.all }
+	end
+
 end
