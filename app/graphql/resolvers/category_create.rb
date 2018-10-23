@@ -5,8 +5,10 @@ class Resolvers::CategoryCreate < GraphQL::Function
 	type Types::CategoryType
 
 	def call(_obj, args, _ctx)
-		Category.new(name: args[:name], 
-						 rubric: Rubric.find_by(name: args[:rubric]))
+		category = Category.create!(name: args[:name]) 
+		category.rubric = Rubric.find_by(name: args[:rubric])
+
+		category
 
 	rescue Mongoid::Errors::Validations => err
 		raise GraphQL::ExecutionError.new(CategoriesHelper::Errors.INVALID_INPUT + err.message)
