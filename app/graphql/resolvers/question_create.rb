@@ -5,8 +5,6 @@ class Resolvers::QuestionCreate < GraphQL::Function
 
 	type Types::QuestionType
 
-	ERR_INVALID_INPUT = "Invalid input for record"
-	ERR_MORE_THAN_ONE_CORRECT_ANSWER = "Multiple answers flagged as correct, question may only have one correct answer"
 
 	def only_one_correct?(answers)
 		num_correct = 0
@@ -18,13 +16,15 @@ class Resolvers::QuestionCreate < GraphQL::Function
 		question = Question.create!(name: args[:name],
 											 category: Category.find_by(name: args[:category]))
 		
-		raise GraphQL::ExecutionError.new(ERR_MORE_THAN_ONE_CORRECT_ANSWER) unless only_one_correct?(args[:answers])
+		raise GraphQL::ExecutionError.new(AnswersHelper::Errors.MORE_THAN_ONE_CORRECT_ANSWER) unless only_one_correct?(args[:answers])
 		args[:answers].each { |answer| question.answers.create!(name: answer[:name], correct: answer[:correct]) }
 
 		question
 
 	rescue Mongoid::Errors::Validations => err
-		raise GraphQL::ExecutionError.new(ERR_INVALID_INPUT + err.message )
+		raise GraphQL::ExecutionError.new(QuestionsHelper::Errors.INVALID_INPUT + err.message)
+
+	# TODO: handle category not found error
 
 	end
 
