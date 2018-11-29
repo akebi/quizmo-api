@@ -10,5 +10,6 @@ RSpec.describe Question, type: :model do
 	it { is_expected.to embed_many(:answers) }
 
 	it { is_expected.to validate_presence_of(:name).on(:create) }
+	it { is_expected.to validate_uniqueness_of(:name).on(:create) }	
 
 end

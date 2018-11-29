@@ -7,7 +7,6 @@ RSpec.describe Resolvers::QuestionCreate do
 	let(:_ctx) { {} }
 
 	context "valid input for all question fields" do
-		
 		let(:args) do 
 			{ name: "What was the first planet to be discovered using the telescope, in 1781?",
 	  			category: "mcq",
