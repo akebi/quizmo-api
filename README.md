@@ -54,7 +54,7 @@ rails db:seed
 2. Start dev server 
 `rails s`
 
-3. Use GraphQL in browser - http://localhost:3000/graphql
+3. Use GraphQL in browser - http://localhost:3000/graphiql
 
 
 ## GraphQL Example Queries
