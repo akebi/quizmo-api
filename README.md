@@ -47,8 +47,8 @@ Run tests
 1. Start mongo & seed db
 ```
 brew services start mongodb
-rails db:create
-rails db:seed
+rake db:create
+rake db:seed
 ```
 
 2. Start dev server 
