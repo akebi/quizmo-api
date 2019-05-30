@@ -47,8 +47,8 @@ Run tests
 1. Start mongo & seed db
 ```
 brew services start mongodb
-rails db:create
-rails db:seed
+rake db:create
+rake db:seed
 ```
 
 2. Start dev server 
@@ -57,6 +57,60 @@ rails db:seed
 3. Use GraphQL in browser - http://localhost:3000/graphiql
 
 
-## Example Queries
+## GraphQL Example Queries
 ```
+
+query {
+  questions {
+    name
+    category {
+      name
+      rubric {
+        name
+        unit_score
+        pass_deduction
+      }
+    }
+    answers {
+      name
+      correct
+    }
+  }
+}
+
+mutation {
+  createQuestion(
+    name: "What crawls, stands and hops all at the same time?", 
+    category: "open", 
+    answers: [{name: "A dark-billed platypus", correct: true},
+    					{name: "Honey badger", correct: true}]
+  ) {
+    name
+    category {
+      name
+      rubric {
+        name
+        unit_score
+        pass_deduction
+      }
+    }
+    answers {
+      name
+      correct
+    }
+  }
+}
+
+mutation {
+  categoryCreate(
+    name: "all-or-nothing", 
+    rubric: "openly") {
+      name
+      rubric {
+        name
+        unit_score
+        pass_deduction
+      }
+    }
+}
 ```
