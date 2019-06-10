@@ -4,5 +4,11 @@
 .byebug_history/
 bin/
 
+# GraphQL
+.keep
+
 # Vim swap files
 .*.swp
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
