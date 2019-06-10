@@ -14,6 +14,11 @@ https://rvm.io/
 # Note: replace `gpg2` with `gpg` in the first command
 ```
 
+- Bundler
+```
+Steps to upgarde from Bundler 1 to Bundler 2: https://bundler.io/v2.0/guides/bundler_2_upgrade.html
+```
+
 - MongoDB - mongo has CLI client: https://docs.mongodb.com/mongoid/master/tutorials/mongoid-rails/
 ```
 brew install mongodb
@@ -51,7 +56,7 @@ rake db:create
 rake db:seed
 ```
 
-2. Start dev server 
+2. Start dev server
 `rails s`
 
 3. Use GraphQL in browser - http://localhost:3000/graphiql
@@ -80,8 +85,8 @@ query {
 
 mutation {
   createQuestion(
-    name: "What crawls, stands and hops all at the same time?", 
-    category: "open", 
+    name: "What crawls, stands and hops all at the same time?",
+    category: "open",
     answers: [{name: "A dark-billed platypus", correct: true},
     					{name: "Honey badger", correct: true}]
   ) {
@@ -103,7 +108,7 @@ mutation {
 
 mutation {
   categoryCreate(
-    name: "all-or-nothing", 
+    name: "all-or-nothing",
     rubric: "openly") {
       name
       rubric {
