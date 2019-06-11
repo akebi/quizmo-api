@@ -13,7 +13,8 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 module Quizmo
-	class Application < Rails::Application
+  class Application < Rails::Application
+    require 'action_cable/engine'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
