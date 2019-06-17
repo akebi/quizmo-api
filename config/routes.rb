@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
+  get 'home/index'
+  get 'sessions/new'
+  get 'users/new'
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
 
   post "/graphql", to: "graphql#execute"
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  resources :users
+  resources :sessions
   resources :questions
   resources :categories
   resources :rubrics

@@ -6,18 +6,21 @@ module Mutations
         argument :email, Types::AuthProviderEmailInput, required: false
       end
 
-      argument :name, String, required: true
+      argument :username, String, required: true
+      argument :full_name, String, required: true
+      argument :role, String, required: true
       argument :auth_provider, AuthProviderSignupData, required: false
 
       type Types::UserType
 
-      def resolve(name: nil, auth_provider: nil)
+      def resolve(username: nil, full_name: nil, auth_provider: nil, role: nil)
         User.create!(
-          name: name,
+          username: username,
+          full_name: full_name,
+          role: role,
           email: auth_provider&.[](:email)&.[](:email),
           password: auth_provider&.[](:email)&.[](:password)
         )
       end
     end
   end
-  
