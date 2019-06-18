@@ -14,5 +14,6 @@ module Types
 		field :categoryCreate, function: Resolvers::CategoryCreate.new
 		# field :rubricCreate, function: Resolvers::RubricCreate.new
 		field :create_user, mutation: Mutations::CreateUser
+		field :login_user, mutation: Mutations::LogInUser
 	end
   end

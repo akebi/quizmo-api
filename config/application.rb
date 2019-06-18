@@ -15,6 +15,7 @@ Bundler.require(*Rails.groups)
 module Quizmo
   class Application < Rails::Application
     require 'action_cable/engine'
+    config.api_only = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -35,11 +36,11 @@ module Quizmo
 	 	Mongoid.load!('./config/mongoid.yml')
 
 		config.mongoid.logger = Logger.new($stdout, :warn)
-	 
+
 	 	config.generators { |g| g.orm :mongoid }
 
 		# config.mongoid.preload_models = false
 
 	end
- 
+
 end

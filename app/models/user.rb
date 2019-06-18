@@ -15,8 +15,9 @@ class User
   validates_presence_of :email
   validates_uniqueness_of :email
 
-  def self.authenticate(email, password)
-    user = find_by_email(email)
+  def authenticate(email, password)
+    # user = find_by_email(email)
+    user = User.find_by email: email
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
     else
