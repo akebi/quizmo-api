@@ -8,14 +8,16 @@ module Mutations
 
     argument :username, String, required: true
     argument :full_name, String, required: true
-    argument :auth_provider, AuthProviderSignupData, required: false
+    argument :role, String, required: true
+    argument :auth_provider, AuthProviderSignupData, required: true
 
     type Types::UserType
 
-    def resolve(username: nil, full_name: nil, auth_provider: nil)
+    def resolve(username: nil, full_name: nil, role: nil, auth_provider: nil)
       User.create!(
         username: username,
         full_name: full_name,
+        role: Role.find_by(name: role),
         email: auth_provider&.[](:email)&.[](:email),
         password: auth_provider&.[](:email)&.[](:password)
       )

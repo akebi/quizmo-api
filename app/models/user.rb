@@ -6,8 +6,6 @@ class User
   field :password_hash, type: String
   field :password_salt, type: String
 
-  has_one :role
-
   attr_accessor :password
   before_save :encrypt_password
 
@@ -16,8 +14,10 @@ class User
   validates_presence_of :email
   validates_uniqueness_of :email
 
+  belongs_to :role
+
+
   def authenticate(email, password)
-    # user = find_by_email(email)
     user = User.find_by email: email
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
