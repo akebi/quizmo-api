@@ -13,7 +13,7 @@ module Types
 		field :questionCreate, function: Resolvers::QuestionCreate.new
 		field :categoryCreate, function: Resolvers::CategoryCreate.new
 		# field :rubricCreate, function: Resolvers::RubricCreate.new
-		field :create_user, mutation: Mutations::CreateUser
-		field :login_user, mutation: Mutations::LogInUser
+		field :user_create, mutation: Mutations::UserCreate
+		field :user_log_in, mutation: Mutations::UserLogIn
 	end
   end
