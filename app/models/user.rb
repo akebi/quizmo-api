@@ -5,7 +5,8 @@ class User
   field :email, type: String
   field :password_hash, type: String
   field :password_salt, type: String
-  field :role, type: String
+
+  has_one :role
 
   attr_accessor :password
   before_save :encrypt_password

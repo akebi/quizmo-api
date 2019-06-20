@@ -1,11 +1,10 @@
 class Role
-    include Mongoid::Document
+  include Mongoid::Document
 
-    validates :name, presence: true, uniqueness: { case_sensitive: false,
-                                                                  message: "already exists" }
+  field :name, type: String
 
-    field :name, type: String
+  has_many :users
 
-    has_many :users
+  validates_uniqueness_of :name
 
 end
