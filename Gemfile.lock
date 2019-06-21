@@ -97,6 +97,7 @@ GEM
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     rack (2.0.7)
+    rack-cors (1.0.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -183,6 +184,7 @@ DEPENDENCIES
   jwt
   mongoid (~> 7.0)
   mongoid-rspec (~> 4.0.1)
+  rack-cors
   rails (= 5.2.3)
   rspec-rails (~> 3.8)
   sdoc (~> 0.4.0)

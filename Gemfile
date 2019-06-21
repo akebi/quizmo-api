@@ -8,14 +8,17 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-#Use ActiveModel has_secure_password
+# password-hashing gem
 gem 'bcrypt', '~> 3.1.7'
 
 # JWT for authentication tokens
 gem 'jwt'
 
-#Thin
+# Thin
 gem 'thin'
+
+# CORS
+gem 'rack-cors'
 
 # MongoDB ODM
 gem 'mongoid', '~> 7.0'
